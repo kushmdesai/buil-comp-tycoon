@@ -204,6 +204,26 @@ texture = ExtResource("7_kek77")
 position = Vector2(162, 408)
 shape = SubResource("RectangleShape2D_dg77c")
 
+[node name="1-RAM" type="StaticBody2D" parent="." unique_id=436714186]
+
+[node name="Sprite2D" type="Sprite2D" parent="1-RAM" unique_id=1182393429]
+position = Vector2(248, 408)
+texture = ExtResource("7_kek77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="1-RAM" unique_id=2000589754]
+position = Vector2(248, 408)
+shape = SubResource("RectangleShape2D_dg77c")
+
+[node name="2-RAM" type="StaticBody2D" parent="." unique_id=1431650223]
+
+[node name="Sprite2D" type="Sprite2D" parent="2-RAM" unique_id=1339154660]
+position = Vector2(345, 408)
+texture = ExtResource("7_kek77")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="2-RAM" unique_id=1199921287]
+position = Vector2(345, 408)
+shape = SubResource("RectangleShape2D_dg77c")
+
 [node name="HQ-RAM" type="StaticBody2D" parent="." unique_id=773019218]
 
 [node name="Sprite2D" type="Sprite2D" parent="HQ-RAM" unique_id=1897487656]
