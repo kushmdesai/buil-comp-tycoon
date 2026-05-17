@@ -1,37 +1,47 @@
 extends Node2D
 
-const CELL_SIZE = 64
-const COLS = 16
-const ROWS = 10
+func _ready():
+	GameManager.load_game()
+	print(GameManager.cpu_count)
+	for cpu in $Components/CPUs.get_children():
+		if cpu.name.begins_with("CPU-"):
+			cpu.visible = false
+			_disable_collision(cpu)
+			
+	for ram in $Components/RAMs.get_children():
+		if ram.name.begins_with("RAM-"):
+			ram.visible = false
+			_disable_collision(ram)
+			
+	for ssd in $Components/SSDs.get_children():
+		if ssd.name.begins_with("SSD-"):
+			ssd.visible = false
+			_disable_collision(ssd)
+			
+	for i in range(1, GameManager.cpu_count+1):
+		var cpu = $Components/CPUs.get_node_or_null("CPU-" + str(i))
+		if cpu:
+			cpu.visible = true
+			_enable_collision(cpu)
+			
+	for i in range(1, GameManager.ram_count+1):
+		var ram = $Components/RAMs.get_node_or_null("RAM-" + str(i))
+		if ram:
+			ram.visible = true
+			_enable_collision(ram)
+			
+	for i in range(1, GameManager.ssd_count+1):
+		var ssd = $Components/SSDs.get_node_or_null("SSD-" + str(i))
+		if ssd:
+			ssd.visible = true
+			_enable_collision(ssd)
+			
+func _disable_collision(node: Node):
+	for child in node.get_children():
+		if child is CollisionShape2D:
+			child.disabled = true
 
-func _draw():
-	for x in range(COLS + 1):
-		draw_line(
-			Vector2(x * CELL_SIZE, 0),
-			Vector2(x * CELL_SIZE, ROWS * CELL_SIZE),
-			Color(0.4, 0.8, 1.0, 0.5),
-			1.0
-		)
-		
-	for y in range(COLS + 1):
-		draw_line(
-			Vector2(0, y * CELL_SIZE),
-			Vector2(COLS * CELL_SIZE, y * CELL_SIZE),
-			Color(0.4, 0.8, 1.0, 0.5),
-			1.0
-		)
-	if hovered_cell.x >= 0 and hovered_cell.x < COLS and hovered_cell.y >= 0 and hovered_cell.y < ROWS:
-		draw_rect(
-			Rect2(hovered_cell.x * CELL_SIZE, hovered_cell.y * CELL_SIZE, CELL_SIZE, CELL_SIZE),
-			Color(0.4, 0.8, 1.0, 0.2)
-		)
-		
-var hovered_cell = Vector2i(-1, -1)
-
-func _input(event):
-	if event is InputEventMouseButton:
-		hovered_cell = Vector2i(
-			int(event.position.x / CELL_SIZE),
-			int(event.position.y / CELL_SIZE)
-		)
-	queue_redraw()
+func _enable_collision(node: Node):
+	for child in node.get_children():
+		if child is CollisionShape2D:
+			child.disabled = false

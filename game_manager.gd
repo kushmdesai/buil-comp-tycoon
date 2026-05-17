@@ -1,0 +1,57 @@
+extends Node
+
+var cpu_count = 0
+var ram_count = 0
+var ssd_count = 0
+var money = 0
+
+const SAVE_PATH = "user://savegame.json"
+
+func save_game():
+	var data = {
+		"cpu_count": cpu_count,
+		"ram_count": ram_count,
+		"ssd_count": ssd_count,
+		"money": money
+	}
+	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
+	file.store_string(JSON.stringify(data))
+	file.close()
+
+func load_game():
+	if not FileAccess.file_exists(SAVE_PATH):
+		return
+	var file = FileAccess.open(SAVE_PATH, FileAccess.READ)
+	var data = JSON.parse_string(file.get_as_text())
+	file.close()
+	if data:
+		cpu_count = data["cpu_count"]
+		ram_count = data["ram_count"]
+		ssd_count = data["ssd_count"]
+		money = data["money"]
+func unlock_next_cpu(cpu_group: Node):
+	cpu_count += 1
+	var target = cpu_group.get_node_or_null("CPU-" + str(cpu_count))
+	if target:
+		target.visible = true
+		for child in target.get_children():
+			if child is CollisionShape2D:
+				child.disabled = false
+		
+func unlock_next_ram(ram_group: Node):
+	ram_count += 1
+	var target = ram_group.get_node_or_null("RAM-" + str(ram_count))
+	if target:
+		target.visible = true
+		for child in target.get_children():
+			if child is CollisionShape2D:
+				child.disabled = false
+		
+func unlock_next_ssd(ssd_group: Node):
+	ssd_count += 1
+	var target = ssd_group.get_node_or_null("SSD-" + str(ssd_count))
+	if target:
+		target.visible = true
+		for child in target.get_children():
+			if child is CollisionShape2D:
+				child.disabled = false
