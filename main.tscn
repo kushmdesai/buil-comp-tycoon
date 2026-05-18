@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://dy0k5w4prukso" path="res://assets/io-7x8.png" id="12_dg77c"]
 [ext_resource type="Texture2D" uid="uid://bym2p3s27o13r" path="res://assets/ssd-5x11-y.png" id="13_cegan"]
 [ext_resource type="Texture2D" uid="uid://cep8y4tqjo3rf" path="res://assets/ssd-5x11-b.png" id="14_82xsv"]
+[ext_resource type="Script" uid="uid://cpfxxhggo2mbt" path="res://hud.gd" id="20_82xsv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("2_0xm2m")
@@ -109,6 +110,7 @@ size = Vector2(111, 96)
 size = Vector2(10, 7)
 
 [node name="Main" type="Node2D" unique_id=498748600]
+position = Vector2(5, 0)
 script = ExtResource("1_ig7tw")
 
 [node name="Layer0" type="TileMapLayer" parent="." unique_id=1356330711]
@@ -505,6 +507,7 @@ position = Vector2(984, 520)
 texture = ExtResource("14_82xsv")
 
 [node name="SSD-4" type="StaticBody2D" parent="Components/SSDs" unique_id=442871690]
+metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/SSDs/SSD-4" unique_id=955998437]
 position = Vector2(1080, 519.5)
@@ -552,3 +555,21 @@ offset = Vector2(0, 100)
 zoom = Vector2(4, 4)
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=151067668]
+
+[node name="HUD" type="Control" parent="UI" unique_id=1388202115]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -135.0
+offset_top = 23.0
+offset_right = -14.0
+offset_bottom = 111.0
+script = ExtResource("20_82xsv")
+
+[node name="MoneyLabel" type="Label" parent="UI/HUD" unique_id=347254241]
+layout_mode = 0
+offset_left = 174.0
+offset_top = 37.0
+offset_right = 214.0
+offset_bottom = 100.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 44

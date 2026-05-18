@@ -7,6 +7,12 @@ var money = 0
 
 const SAVE_PATH = "user://savegame.json"
 
+const CPU_INCOME = 0.5
+const RAM_INCOME = 0.25
+const SSD_INCOME = 1.0
+
+var time_accumulated = 0.0
+
 func save_game():
 	var data = {
 		"cpu_count": cpu_count,
@@ -29,6 +35,20 @@ func load_game():
 		ram_count = data["ram_count"]
 		ssd_count = data["ssd_count"]
 		money = data["money"]
+		
+func _process(delta):
+	time_accumulated += delta
+	if time_accumulated >= 1:
+		time_accumulated = 0.0
+		_tick()
+		
+func _tick():
+	money += (cpu_count + 1) * CPU_INCOME
+	money += (ram_count + 1) * RAM_INCOME
+	money += (ssd_count + 1) * SSD_INCOME
+	print(GameManager.money)
+	save_game()
+	
 func unlock_next_cpu(cpu_group: Node):
 	cpu_count += 1
 	var target = cpu_group.get_node_or_null("CPU-" + str(cpu_count))
