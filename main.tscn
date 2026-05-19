@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://c5q3kger72w33" path="res://main.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://d3k68fny3ustt" path="res://assets/tilesheet.png" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://dyltnsule7mvr" path="res://character_body_2d.gd" id="3_1bvp3"]
+[ext_resource type="Script" uid="uid://cyq1vmy24i0tr" path="res://hq_cpu.gd" id="3_getpj"]
 [ext_resource type="Texture2D" uid="uid://b47q03memheoa" path="res://assets/character-back.png" id="4_lquwl"]
 [ext_resource type="Texture2D" uid="uid://narx1el11jhr" path="res://assets/cpu-core-3x2.png" id="4_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://bo5g8yrr7gh3n" path="res://assets/cpu-80x32.png" id="5_lquwl"]
@@ -13,12 +14,14 @@
 [ext_resource type="Texture2D" uid="uid://dq3813veflold" path="res://assets/ram-2x4.png" id="8_vivmo"]
 [ext_resource type="Texture2D" uid="uid://d207dhc4cl42k" path="res://assets/ram-2x5.png" id="9_2cqfq"]
 [ext_resource type="Texture2D" uid="uid://bhecj8dnra3r1" path="res://assets/ssd-5x11-g.png" id="9_efxa6"]
+[ext_resource type="Script" uid="uid://dtobkrod3jdvr" path="res://hq_ram.gd" id="9_ryguw"]
 [ext_resource type="Texture2D" uid="uid://dh5wnsnb3cgdl" path="res://assets/ssd_hq-5x8.png" id="10_4c57u"]
 [ext_resource type="Texture2D" uid="uid://c1pv07pub254u" path="res://assets/power_supply-12x12.png" id="11_efxa6"]
 [ext_resource type="Texture2D" uid="uid://vblm48kijh0x" path="res://assets/ssd-5x11-r.png" id="12_074og"]
 [ext_resource type="Texture2D" uid="uid://dy0k5w4prukso" path="res://assets/io-7x8.png" id="12_dg77c"]
 [ext_resource type="Texture2D" uid="uid://bym2p3s27o13r" path="res://assets/ssd-5x11-y.png" id="13_cegan"]
 [ext_resource type="Texture2D" uid="uid://cep8y4tqjo3rf" path="res://assets/ssd-5x11-b.png" id="14_82xsv"]
+[ext_resource type="Script" uid="uid://hu0yriw8ddar" path="res://hq_ssd.gd" id="14_d13ii"]
 [ext_resource type="Script" uid="uid://cpfxxhggo2mbt" path="res://hud.gd" id="20_82xsv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
@@ -79,6 +82,12 @@ size = Vector2(20, 670)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1u8w0"]
 size = Vector2(22, 670)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0odxb"]
+size = Vector2(10, 3)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lswn8"]
+size = Vector2(42, 55)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_272bh"]
 size = Vector2(80.5, 32)
 
@@ -88,6 +97,12 @@ size = Vector2(48, 32)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yaehf"]
 size = Vector2(48, 48)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a6jrf"]
+size = Vector2(11, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xuqvo"]
+size = Vector2(41, 41)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dg77c"]
 size = Vector2(48, 16)
 
@@ -96,6 +111,12 @@ size = Vector2(64, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cegan"]
 size = Vector2(80, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qsp4k"]
+size = Vector2(10, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kq58d"]
+size = Vector2(65, 45)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w48qg"]
 size = Vector2(80, 173)
@@ -109,8 +130,9 @@ size = Vector2(111, 96)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7mycd"]
 size = Vector2(10, 7)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_seu75"]
+
 [node name="Main" type="Node2D" unique_id=498748600]
-position = Vector2(5, 0)
 script = ExtResource("1_ig7tw")
 
 [node name="Layer0" type="TileMapLayer" parent="." unique_id=1356330711]
@@ -123,7 +145,7 @@ tile_set = SubResource("TileSet_1bvp3")
 [node name="TopWall" type="StaticBody2D" parent="WorldBorder" unique_id=1543220283]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldBorder/TopWall" unique_id=1218570520]
-position = Vector2(583.5, 1)
+position = Vector2(578, 12)
 shape = SubResource("RectangleShape2D_getpj")
 
 [node name="BottomWall" type="StaticBody2D" parent="WorldBorder" unique_id=1212362165]
@@ -148,16 +170,35 @@ shape = SubResource("RectangleShape2D_1u8w0")
 
 [node name="CPUs" type="Node2D" parent="Components" unique_id=2064821938]
 
-[node name="HQ-CPU" type="StaticBody2D" parent="Components/CPUs" unique_id=1694520833]
+[node name="HQ-CPU" type="Node2D" parent="Components/CPUs" unique_id=895417767]
+script = ExtResource("3_getpj")
 
-[node name="Sprite2D" type="Sprite2D" parent="Components/CPUs/HQ-CPU" unique_id=140918519]
+[node name="Building" type="StaticBody2D" parent="Components/CPUs/HQ-CPU" unique_id=1694520833]
+
+[node name="Sprite2D" type="Sprite2D" parent="Components/CPUs/HQ-CPU/Building" unique_id=140918519]
 position = Vector2(90, 176)
 texture = ExtResource("6_7mycd")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Components/CPUs/HQ-CPU" unique_id=1126167966]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Components/CPUs/HQ-CPU/Building" unique_id=1126167966]
 position = Vector2(-174.99998, -497.00003)
 scale = Vector2(4.4886346, 3.3333333)
 polygon = PackedVector2Array(50.1266, 201.90002, 50.1266, 211.50003, 67.72661, 211.50003, 57.701286, 208.80002, 57.924072, 200.70003, 67.94939, 192.30002, 50.1266, 192.30002)
+
+[node name="NPC" type="StaticBody2D" parent="Components/CPUs/HQ-CPU" unique_id=53992661 groups=["shop_npc"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Components/CPUs/HQ-CPU/NPC" unique_id=633881898]
+position = Vector2(101, 180)
+texture = ExtResource("4_lquwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/CPUs/HQ-CPU/NPC" unique_id=1211492465]
+position = Vector2(101, 186.5)
+shape = SubResource("RectangleShape2D_0odxb")
+
+[node name="InteractionZone" type="Area2D" parent="Components/CPUs/HQ-CPU" unique_id=744062878]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/CPUs/HQ-CPU/InteractionZone" unique_id=1306618611]
+position = Vector2(102, 178.5)
+shape = SubResource("RectangleShape2D_lswn8")
 
 [node name="Start-CPU" type="StaticBody2D" parent="Components/CPUs" unique_id=1690958511]
 
@@ -251,16 +292,35 @@ texture = ExtResource("5_w48qg")
 
 [node name="RAMs" type="Node2D" parent="Components" unique_id=840831425]
 
-[node name="HQ-RAM" type="StaticBody2D" parent="Components/RAMs" unique_id=773019218]
+[node name="HQ-RAM" type="Node2D" parent="Components/RAMs" unique_id=20082106]
+script = ExtResource("9_ryguw")
 
-[node name="Sprite2D" type="Sprite2D" parent="Components/RAMs/HQ-RAM" unique_id=1897487656]
+[node name="Building" type="StaticBody2D" parent="Components/RAMs/HQ-RAM" unique_id=773019218]
+
+[node name="Sprite2D" type="Sprite2D" parent="Components/RAMs/HQ-RAM/Building" unique_id=1897487656]
 position = Vector2(72, 352)
 texture = ExtResource("8_4c57u")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Components/RAMs/HQ-RAM" unique_id=1880637131]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Components/RAMs/HQ-RAM/Building" unique_id=1880637131]
 position = Vector2(-41, -142)
 scale = Vector2(4.5625, 4.71875)
 polygon = PackedVector2Array(19.50685, 91.125824, 19.50685, 98.543045, 29.58904, 99.81457, 29.58904, 103.84106, 19.50685, 105.11258, 19.50685, 118.251656, 30.027397, 118.251656, 30.027397, 91.125824)
+
+[node name="NPC" type="StaticBody2D" parent="Components/RAMs/HQ-RAM" unique_id=122487839 groups=["shop_npc"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Components/RAMs/HQ-RAM/NPC" unique_id=884156452]
+position = Vector2(73, 338)
+texture = ExtResource("4_lquwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/RAMs/HQ-RAM/NPC" unique_id=1878176362]
+position = Vector2(72.5, 343.5)
+shape = SubResource("RectangleShape2D_a6jrf")
+
+[node name="InteractionZone" type="Area2D" parent="Components/RAMs/HQ-RAM" unique_id=2021699393]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/RAMs/HQ-RAM/InteractionZone" unique_id=1283230627]
+position = Vector2(74.5, 341.5)
+shape = SubResource("RectangleShape2D_xuqvo")
 
 [node name="Start-RAM" type="StaticBody2D" parent="Components/RAMs" unique_id=1022229573]
 
@@ -454,17 +514,36 @@ texture = ExtResource("9_2cqfq")
 
 [node name="SSDs" type="Node2D" parent="Components" unique_id=586329258]
 
-[node name="HQ-SSD" type="StaticBody2D" parent="Components/SSDs" unique_id=1730406688]
+[node name="HQ-SSD" type="Node2D" parent="Components/SSDs" unique_id=1391977609]
+script = ExtResource("14_d13ii")
+
+[node name="Building" type="StaticBody2D" parent="Components/SSDs/HQ-SSD" unique_id=1730406688]
 position = Vector2(118, 8)
 
-[node name="Sprite2D" type="Sprite2D" parent="Components/SSDs/HQ-SSD" unique_id=1505443574]
+[node name="Sprite2D" type="Sprite2D" parent="Components/SSDs/HQ-SSD/Building" unique_id=1505443574]
 position = Vector2(579, 344)
 texture = ExtResource("10_4c57u")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Components/SSDs/HQ-SSD" unique_id=2004839268]
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Components/SSDs/HQ-SSD/Building" unique_id=2004839268]
 position = Vector2(98, -455.3848)
 scale = Vector2(1, 6.7053566)
 polygon = PackedVector2Array(442, 128.76047, 520, 128.76047, 521, 109.67125, 441, 109.67125, 441, 117.27711, 507, 117.72451, 508, 123.09335, 442, 122.944214)
+
+[node name="NPC" type="StaticBody2D" parent="Components/SSDs/HQ-SSD" unique_id=1984203306 groups=["shop_npc"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Components/SSDs/HQ-SSD/NPC" unique_id=249675348]
+position = Vector2(697, 358)
+texture = ExtResource("4_lquwl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/SSDs/HQ-SSD/NPC" unique_id=2026735048]
+position = Vector2(697, 363.5)
+shape = SubResource("RectangleShape2D_qsp4k")
+
+[node name="InteractionZone" type="Area2D" parent="Components/SSDs/HQ-SSD" unique_id=1692015067]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/SSDs/HQ-SSD/InteractionZone" unique_id=207513943]
+position = Vector2(701.5, 360.5)
+shape = SubResource("RectangleShape2D_kq58d")
 
 [node name="Start-SSD" type="StaticBody2D" parent="Components/SSDs" unique_id=1337765247]
 
@@ -507,7 +586,6 @@ position = Vector2(984, 520)
 texture = ExtResource("14_82xsv")
 
 [node name="SSD-4" type="StaticBody2D" parent="Components/SSDs" unique_id=442871690]
-metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/SSDs/SSD-4" unique_id=955998437]
 position = Vector2(1080, 519.5)
@@ -521,13 +599,13 @@ texture = ExtResource("12_074og")
 
 [node name="PowerSupply" type="StaticBody2D" parent="Fixed" unique_id=1876498717]
 
-[node name="Sprite2D" type="Sprite2D" parent="Fixed/PowerSupply" unique_id=1070213508]
-position = Vector2(1001, 191)
-texture = ExtResource("11_efxa6")
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Fixed/PowerSupply" unique_id=1747955070]
 position = Vector2(1001, 191)
 shape = SubResource("RectangleShape2D_ycdy4")
+
+[node name="Sprite2D" type="Sprite2D" parent="Fixed/PowerSupply" unique_id=1070213508]
+position = Vector2(1001, 191)
+texture = ExtResource("11_efxa6")
 
 [node name="IO" type="StaticBody2D" parent="Fixed" unique_id=446667229]
 
@@ -553,6 +631,12 @@ texture = ExtResource("4_lquwl")
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=549269324]
 offset = Vector2(0, 100)
 zoom = Vector2(4, 4)
+
+[node name="InteractionZone" type="Area2D" parent="Player" unique_id=2044841007]
+
+[node name="CollisionShape2d" type="CollisionShape2D" parent="Player/InteractionZone" unique_id=1166711870]
+position = Vector2(44, 82)
+shape = SubResource("RectangleShape2D_seu75")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=151067668]
 

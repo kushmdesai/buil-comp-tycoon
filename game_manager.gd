@@ -38,7 +38,7 @@ func load_game():
 		
 func _process(delta):
 	time_accumulated += delta
-	if time_accumulated >= 1:
+	if time_accumulated >= 5:
 		time_accumulated = 0.0
 		_tick()
 		
@@ -52,8 +52,11 @@ func _tick():
 func unlock_next_cpu(cpu_group: Node):
 	cpu_count += 1
 	var target = cpu_group.get_node_or_null("CPU-" + str(cpu_count))
+	print("Looking for: CPU-" + str(cpu_count))
+	print("Foung: ", target)
 	if target:
 		target.visible = true
+		print("Set Visible")
 		for child in target.get_children():
 			if child is CollisionShape2D:
 				child.disabled = false

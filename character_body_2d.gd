@@ -16,3 +16,10 @@ func _physics_process(delta):
 		
 	velocity = direction.normalized() * SPEED
 	move_and_slide()
+
+func _input(event):
+	if event.is_action_pressed("interact"):
+		print("e")
+		for body in $InteractionZone.get_overlapping_bodies():
+			if body.is_in_group("shop_npc"):
+				body.get_parent().interact()
