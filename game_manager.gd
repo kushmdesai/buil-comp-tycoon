@@ -4,12 +4,17 @@ var cpu_count = 0
 var ram_count = 0
 var ssd_count = 0
 var money = 0
+var overclock_level = 0
 
 const SAVE_PATH = "user://savegame.json"
 
 const CPU_INCOME = 0.5
 const RAM_INCOME = 0.25
 const SSD_INCOME = 1.0
+
+const OVERCLOCK_MAX = 4
+const OVERCLOCK_COSTS = [50, 150, 400, 1000]
+const OVERCLOCK_MULTIPLIERS = [1.0, 1.1, 1.25, 1.5, 2.0]
 
 var time_accumulated = 0.0
 
@@ -18,6 +23,7 @@ func save_game():
 		"cpu_count": cpu_count,
 		"ram_count": ram_count,
 		"ssd_count": ssd_count,
+		"overclock_level": overclock_level,
 		"money": money
 	}
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
@@ -31,9 +37,10 @@ func load_game():
 	var data = JSON.parse_string(file.get_as_text())
 	file.close()
 	if data:
-		cpu_count = data["cpu_count"]
-		ram_count = data["ram_count"]
-		ssd_count = data["ssd_count"]
+		cpu_count = int(data["cpu_count"])
+		ram_count = int(data["ram_count"])
+		ssd_count = int(data["ssd_count"])
+		overclock_level = int(data.get("overclock_level", 0))
 		money = data["money"]
 		
 func _process(delta):
@@ -43,12 +50,12 @@ func _process(delta):
 		_tick()
 		
 func _tick():
-	money += (cpu_count + 1) * CPU_INCOME
-	money += (ram_count + 1) * RAM_INCOME
-	money += (ssd_count + 1) * SSD_INCOME
-	print(GameManager.money)
+	var multiplier = get_overclock_multiplier()
+	money += ((cpu_count + 1) * CPU_INCOME) * multiplier
+	money += ((ram_count + 1) * RAM_INCOME) * multiplier
+	money += ((ssd_count + 1) * SSD_INCOME) * multiplier
 	save_game()
-	
+
 func unlock_next_cpu(cpu_group: Node):
 	cpu_count += 1
 	var target = cpu_group.get_node_or_null("CPU-" + str(cpu_count))
@@ -78,3 +85,11 @@ func unlock_next_ssd(ssd_group: Node):
 		for child in target.get_children():
 			if child is CollisionShape2D:
 				child.disabled = false
+
+func get_overclock_multiplier() -> float:
+	return OVERCLOCK_MULTIPLIERS[overclock_level]
+
+func get_next_overclock_cost():
+	if overclock_level >= OVERCLOCK_MAX:
+		return null
+	return OVERCLOCK_COSTS[overclock_level]

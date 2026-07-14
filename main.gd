@@ -45,3 +45,12 @@ func _enable_collision(node: Node):
 	for child in node.get_children():
 		if child is CollisionShape2D:
 			child.disabled = false
+
+func refresh_overclock_visuals():
+	var stages_root = $Components/Shop/Shop/OverclockStages
+	for i in range(1, GameManager.OVERCLOCK_MAX + 1):
+		var stage = stages_root.get_node_or_null("Lv%d" % i)
+		if stage:
+			var is_unlocked = GameManager.overclock_level >= i
+			stage.get_node("Unlocked").visible = is_unlocked
+			stage.get_node("Locked").visible = not is_unlocked
