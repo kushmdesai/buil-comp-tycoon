@@ -16,6 +16,11 @@ const OVERCLOCK_MAX = 4
 const OVERCLOCK_COSTS = [50, 150, 400, 1000]
 const OVERCLOCK_MULTIPLIERS = [1.0, 1.1, 1.25, 1.5, 2.0]
 
+const CPU_BASE_COST = 5
+const RAM_BASE_COST = 3
+const SSD_BASE_COST = 10
+const COST_MULTIPLIER = 1.15
+
 var time_accumulated = 0.0
 
 var hud = null
@@ -99,3 +104,12 @@ func get_next_overclock_cost():
 func show_feedback(message: String, color: Color):
 	if hud:
 		hud.show_feedback(message, color)
+
+func get_cpu_cost():
+	return round(CPU_BASE_COST * pow(COST_MULTIPLIER, cpu_count))
+
+func get_ram_cost():
+	return round(RAM_BASE_COST * pow(COST_MULTIPLIER, ram_count))
+
+func get_ssd_cost():
+	return round(SSD_BASE_COST * pow(COST_MULTIPLIER, ssd_count))

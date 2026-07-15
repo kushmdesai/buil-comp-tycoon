@@ -1,18 +1,19 @@
 extends Node2D
 
-const COST = 5
+
 const MAX = 18
 
 @onready var prompt = $PromptLabel
 
 func show_prompt():
-	prompt.text = "Press E - $" + str(COST)
+	prompt.text = "Press E - $" + str(GameManager.get_ram_cost())
 	prompt.visible = true
 
 func hide_prompt():
 	prompt.visible = false
 
 func interact():
+	var COST = GameManager.get_ram_cost()
 	if GameManager.ram_count >= MAX:
 		GameManager.show_feedback("MAX RAMs reached!", Color.RED)
 		return
