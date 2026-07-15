@@ -3,6 +3,7 @@ extends CharacterBody2D
 const SPEED = 100
 
 func _physics_process(delta):
+	var position = global_position
 	var direction = Vector2.ZERO
 	
 	if Input.is_action_pressed("move_right"):

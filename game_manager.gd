@@ -18,6 +18,8 @@ const OVERCLOCK_MULTIPLIERS = [1.0, 1.1, 1.25, 1.5, 2.0]
 
 var time_accumulated = 0.0
 
+var hud = null
+
 func save_game():
 	var data = {
 		"cpu_count": cpu_count,
@@ -93,3 +95,7 @@ func get_next_overclock_cost():
 	if overclock_level >= OVERCLOCK_MAX:
 		return null
 	return OVERCLOCK_COSTS[overclock_level]
+
+func show_feedback(message: String, color: Color):
+	if hud:
+		hud.show_feedback(message, color)

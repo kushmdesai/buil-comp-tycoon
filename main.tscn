@@ -731,7 +731,8 @@ shape = SubResource("RectangleShape2D_vivmo")
 position = Vector2(1065, 368)
 texture = ExtResource("23_wnkbs")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1197868872]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1197868872 groups=["player"]]
+motion_mode = 1
 script = ExtResource("24_f6a44")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=296539876]
@@ -771,3 +772,11 @@ offset_right = 214.0
 offset_bottom = 100.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 44
+
+[node name="MessageLabel" type="Label" parent="UI/HUD" unique_id=2134722481]
+layout_mode = 0
+offset_left = 170.0
+offset_top = 107.0
+offset_right = 210.0
+offset_bottom = 130.0
+theme_override_font_sizes/font_size = 40

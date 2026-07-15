@@ -4,11 +4,11 @@ const COST = 25
 const MAX = 4
 func interact():
 	if GameManager.ssd_count >= MAX:
-		print("MAX SSDs reached!")
+		GameManager.show_feedback("MAX SSDs reached!", Color.RED)
 		return
 	if GameManager.money >= COST:
 		GameManager.money -= COST
 		GameManager.unlock_next_ssd(get_node("/root/Main/Components/SSDs"))
-		print("SSD unlocked!")
+		GameManager.show_feedback("SSD unlocked!", Color.GREEN)
 	else:
-		print("Not enough money!")
+		GameManager.show_feedback("Not enough money!", Color.RED)
