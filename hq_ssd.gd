@@ -20,5 +20,7 @@ func interact():
 		GameManager.money -= COST
 		GameManager.unlock_next_ssd(get_node("/root/Main/Components/SSDs"))
 		GameManager.show_feedback("SSD unlocked!", Color.GREEN)
+		GameManager.check_achievemetns()
+		GameManager.save_game()
 	else:
 		GameManager.show_feedback("Not enough money!", Color.RED)

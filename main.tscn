@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://bvuaymi1n8568" path="res://assets/overclock-lv3-lc.png" id="26_b1qrp"]
 [ext_resource type="Texture2D" uid="uid://dhb5xhw557n8b" path="res://assets/overclock-lv4.png" id="27_come4"]
 [ext_resource type="Texture2D" uid="uid://bc3co4qoqgysw" path="res://assets/overclock-lv4-lc.png" id="28_h8e4i"]
+[ext_resource type="Script" uid="uid://dqh5a0x26sqve" path="res://achievements.gd" id="30_ok6jj"]
 [ext_resource type="PackedScene" uid="uid://bt64atgrn2kog" path="res://FeedbackMessage.tscn" id="35_0rl1p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
@@ -721,12 +722,13 @@ position = Vector2(519.5, 528)
 shape = SubResource("RectangleShape2D_lkctx")
 
 [node name="PromptLabel" type="Label" parent="Components/Shop/Shop" unique_id=683264078]
-offset_left = 472.0
+offset_left = 465.0
 offset_top = 494.0
-offset_right = 512.0
+offset_right = 505.0
 offset_bottom = 517.0
 
 [node name="Achievements" type="Node2D" parent="Components/Shop" unique_id=281985487]
+script = ExtResource("30_ok6jj")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Components/Shop/Achievements" unique_id=215608735]
 
@@ -737,6 +739,22 @@ texture = ExtResource("21_0n3wm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/Shop/Achievements/StaticBody2D" unique_id=1927848143]
 position = Vector2(600, 344.5)
 shape = SubResource("RectangleShape2D_4rwpt")
+
+[node name="AchievementsNPC" type="StaticBody2D" parent="Components/Shop/Achievements" unique_id=190778836 groups=["shop_npc"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="Components/Shop/Achievements/AchievementsNPC" unique_id=983665453]
+position = Vector2(571, 407)
+texture = ExtResource("5_qsp4k")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/Shop/Achievements/AchievementsNPC" unique_id=1493431001]
+position = Vector2(571, 414)
+shape = SubResource("RectangleShape2D_jq2sk")
+
+[node name="PromptLabel" type="Label" parent="Components/Shop/Achievements" unique_id=950284763]
+offset_left = 484.0
+offset_top = 364.0
+offset_right = 524.0
+offset_bottom = 387.0
 
 [node name="Fixed" type="Node2D" parent="." unique_id=1147345381]
 
@@ -813,8 +831,7 @@ theme_override_constants/separation = 8
 
 [node name="IncomeLabel" type="Label" parent="UI/HUD" unique_id=1275625447]
 layout_mode = 0
-offset_left = 1148.0
-offset_top = 38.0
-offset_right = 1188.0
-offset_bottom = 82.0
+offset_left = 171.0
+offset_right = 211.0
+offset_bottom = 44.0
 theme_override_font_sizes/font_size = 30

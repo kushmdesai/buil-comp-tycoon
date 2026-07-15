@@ -23,6 +23,7 @@ func interact():
 	if GameManager.money >= cost:
 		GameManager.money -= cost
 		GameManager.overclock_level += 1
+		GameManager.check_achievemetns()
 		GameManager.save_game()
 		
 		var main = get_node("/root/Main")

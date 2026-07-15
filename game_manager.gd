@@ -29,13 +29,20 @@ var time_accumulated = 0.0
 
 var hud = null
 
+var achievements = {
+	"all_parts": false,
+	"max_overclock": false,
+	"thousand_dollars": false
+}
+
 func save_game():
 	var data = {
 		"cpu_count": cpu_count,
 		"ram_count": ram_count,
 		"ssd_count": ssd_count,
 		"overclock_level": overclock_level,
-		"money": money
+		"money": money,
+		"achievements": achievements
 	}
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
@@ -53,7 +60,8 @@ func load_game():
 		ssd_count = int(data["ssd_count"])
 		overclock_level = int(data.get("overclock_level", 0))
 		money = data["money"]
-		
+		achievements = data.get("achievements", achievements)
+
 func _process(delta):
 	time_accumulated += delta
 	autosave_timer += delta
@@ -71,6 +79,7 @@ func _tick():
 	money += ((cpu_count + 1) * CPU_INCOME) * multiplier
 	money += ((ram_count + 1) * RAM_INCOME) * multiplier
 	money += ((ssd_count + 1) * SSD_INCOME) * multiplier
+	check_achievemetns()
 
 func unlock_next_cpu(cpu_group: Node):
 	cpu_count += 1
@@ -105,9 +114,9 @@ func unlock_next_ssd(ssd_group: Node):
 func get_overclock_multiplier() -> float:
 	return OVERCLOCK_MULTIPLIERS[overclock_level]
 
-func show_feedback(message: String, color: Color):
+func show_feedback(message: String, color: Color, duration:= 3.0):
 	if hud:
-		hud.show_feedback(message, color)
+		hud.show_feedback(message, color, duration)
 
 func get_cpu_cost():
 	return round(CPU_BASE_COST * pow(CPU_MULTIPLIER, cpu_count))
@@ -133,3 +142,19 @@ func get_income_per_second():
 	) * multiplier
 	
 	return income_per_tic
+
+func check_achievemetns():
+	if cpu_count >= 8 and ram_count >=18 and ssd_count >= 4:
+		if not achievements["all_parts"]:
+			achievements["all_parts"] = true
+			show_feedback("Achievement Unlocked!\n Fully Equipped", Color.AQUA)
+		
+	if overclock_level >= OVERCLOCK_MAX:
+		if not achievements["max_overclock"]:
+			achievements["max_overclock"] = true
+			show_feedback("Achievemnt Unlocked!\n Maximum Performance", Color.AQUA)
+		
+	if money >= 1000:
+		if not achievements["thousand_dollars"]:
+			achievements["thousand_dollars"] = true
+			show_feedback("Achievemnt Unlocked!\n High Roller", Color.AQUA)

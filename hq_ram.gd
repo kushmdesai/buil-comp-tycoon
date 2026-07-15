@@ -21,5 +21,7 @@ func interact():
 		GameManager.money -= COST
 		GameManager.unlock_next_ram(get_node("/root/Main/Components/RAMs"))
 		GameManager.show_feedback("RAM unlocked!", Color.GREEN)
+		GameManager.check_achievemetns()
+		GameManager.save_game()
 	else:
 		GameManager.show_feedback("Not enough money!", Color.RED)

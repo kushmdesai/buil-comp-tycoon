@@ -7,9 +7,9 @@ func _ready():
 
 func _process(delta):
 	$MoneyLabel.text = "$" + str(snappedf(GameManager.money, 0.01))
-	$IncomeLabel.text = "$" + str(snappedf(GameManager.get_income_per_second(), 2)) + "/s"
+	$IncomeLabel.text = "$" + str(snappedf(GameManager.get_income_per_second(), 0.01)) + "/s"
 	
-func show_feedback(message: String, color: Color):
+func show_feedback(message: String, color: Color, duration := 3.0):
 	var label = feedback_scene.instantiate()
 	
 	label.text = message
@@ -18,8 +18,8 @@ func show_feedback(message: String, color: Color):
 	
 	$Messages.add_child(label)
 	var tween = create_tween()
-	tween.tween_interval(3.0)
-	tween.parallel().tween_property(label, "modulate:a", 0.0, 1.5)
-	tween.parallel().tween_property(label, "position:y", label.position.y - 35, 1.5)
+	tween.tween_interval(duration/2)
+	tween.parallel().tween_property(label, "modulate:a", 0.0, duration/2)
+	tween.parallel().tween_property(label, "position:y", label.position.y - 35, duration/4)
 	
 	tween.tween_callback(label.queue_free)

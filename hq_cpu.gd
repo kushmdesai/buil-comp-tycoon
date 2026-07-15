@@ -26,5 +26,7 @@ func interact():
 		GameManager.unlock_next_cpu(get_node("/root/Main/Components/CPUs"))
 		GameManager.save_game()
 		GameManager.show_feedback("CPU Unlocked!", Color.GREEN)
+		GameManager.check_achievemetns()
+		GameManager.save_game()
 	else:
 		GameManager.show_feedback("Not Enough Money!", Color.RED)
