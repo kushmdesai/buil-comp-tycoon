@@ -35,6 +35,10 @@
 [ext_resource type="Texture2D" uid="uid://dhb5xhw557n8b" path="res://assets/overclock-lv4.png" id="27_come4"]
 [ext_resource type="Texture2D" uid="uid://bc3co4qoqgysw" path="res://assets/overclock-lv4-lc.png" id="28_h8e4i"]
 [ext_resource type="Script" uid="uid://dqh5a0x26sqve" path="res://achievements.gd" id="30_ok6jj"]
+[ext_resource type="Script" uid="uid://di44vu60otmx" path="res://achievement_stages.gd" id="32_facbu"]
+[ext_resource type="Texture2D" uid="uid://u7wje030sy8d" path="res://assets/shop-all.png" id="33_h8e4i"]
+[ext_resource type="Texture2D" uid="uid://cs27fqepy0tnw" path="res://assets/overclock-all.png" id="34_4lmeg"]
+[ext_resource type="Texture2D" uid="uid://duse8atjrfufr" path="res://assets/money.png" id="35_0cp0l"]
 [ext_resource type="PackedScene" uid="uid://bt64atgrn2kog" path="res://FeedbackMessage.tscn" id="35_0rl1p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
@@ -755,6 +759,24 @@ offset_left = 484.0
 offset_top = 364.0
 offset_right = 524.0
 offset_bottom = 387.0
+
+[node name="AchievementStages" type="Node2D" parent="Components/Shop/Achievements" unique_id=172663080]
+script = ExtResource("32_facbu")
+
+[node name="all-parts" type="Sprite2D" parent="Components/Shop/Achievements/AchievementStages" unique_id=1543547060]
+visible = false
+position = Vector2(600, 311)
+texture = ExtResource("33_h8e4i")
+
+[node name="max-overclock" type="Sprite2D" parent="Components/Shop/Achievements/AchievementStages" unique_id=655899163]
+visible = false
+position = Vector2(600, 343)
+texture = ExtResource("34_4lmeg")
+
+[node name="thousand-dollars" type="Sprite2D" parent="Components/Shop/Achievements/AchievementStages" unique_id=560023924]
+visible = false
+position = Vector2(600, 375)
+texture = ExtResource("35_0cp0l")
 
 [node name="Fixed" type="Node2D" parent="." unique_id=1147345381]
 

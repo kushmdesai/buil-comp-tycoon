@@ -28,6 +28,7 @@ const SSD_MULTIPLIER = 1.45
 var time_accumulated = 0.0
 
 var hud = null
+var achievement_sprites = null
 
 var achievements = {
 	"all_parts": false,
@@ -61,6 +62,7 @@ func load_game():
 		overclock_level = int(data.get("overclock_level", 0))
 		money = data["money"]
 		achievements = data.get("achievements", achievements)
+		update_achievements()
 
 func _process(delta):
 	time_accumulated += delta
@@ -148,13 +150,30 @@ func check_achievemetns():
 		if not achievements["all_parts"]:
 			achievements["all_parts"] = true
 			show_feedback("Achievement Unlocked!\n Fully Equipped", Color.AQUA)
+			update_achievements()
 		
 	if overclock_level >= OVERCLOCK_MAX:
 		if not achievements["max_overclock"]:
 			achievements["max_overclock"] = true
 			show_feedback("Achievemnt Unlocked!\n Maximum Performance", Color.AQUA)
+			update_achievements()
 		
 	if money >= 1000:
 		if not achievements["thousand_dollars"]:
 			achievements["thousand_dollars"] = true
 			show_feedback("Achievemnt Unlocked!\n High Roller", Color.AQUA)
+			update_achievements()
+
+func update_achievements():
+	print("updating achievemnts")
+	if achievement_sprites:
+		print("file found")
+		if achievements["all_parts"]:
+			print("print updating all parts")
+			achievement_sprites.show_sprite("all")
+		if achievements["max_overclock"]:
+			print("updating max overclock")
+			achievement_sprites.show_sprite("max")
+		if achievements["thousand_dollars"]:
+			print("updating thousand dollars")
+			achievement_sprites.show_sprite("$")
