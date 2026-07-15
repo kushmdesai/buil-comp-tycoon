@@ -222,6 +222,13 @@ shape = SubResource("RectangleShape2D_0odxb")
 position = Vector2(102, 178.5)
 shape = SubResource("RectangleShape2D_lswn8")
 
+[node name="PromptLabel" type="Label" parent="Components/CPUs/HQ-CPU" unique_id=1362056832]
+visible = false
+offset_left = 91.0
+offset_top = 125.0
+offset_right = 192.0
+offset_bottom = 148.0
+
 [node name="Start-CPU" type="StaticBody2D" parent="Components/CPUs" unique_id=1690958511]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/CPUs/Start-CPU" unique_id=722445038]
@@ -343,6 +350,13 @@ shape = SubResource("RectangleShape2D_a6jrf")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/RAMs/HQ-RAM/InteractionZone" unique_id=1283230627]
 position = Vector2(74.5, 341.5)
 shape = SubResource("RectangleShape2D_xuqvo")
+
+[node name="PromptLabel" type="Label" parent="Components/RAMs/HQ-RAM" unique_id=546917635]
+visible = false
+offset_left = -45.0
+offset_top = 288.0
+offset_right = 56.0
+offset_bottom = 311.0
 
 [node name="Start-RAM" type="StaticBody2D" parent="Components/RAMs" unique_id=1022229573]
 
@@ -566,6 +580,14 @@ shape = SubResource("RectangleShape2D_qsp4k")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/SSDs/HQ-SSD/InteractionZone" unique_id=207513943]
 position = Vector2(701.5, 360.5)
 shape = SubResource("RectangleShape2D_kq58d")
+
+[node name="PromptLabel" type="Label" parent="Components/SSDs/HQ-SSD" unique_id=600561369]
+z_index = 1
+offset_left = 565.0
+offset_top = 313.0
+offset_right = 666.0
+offset_bottom = 336.0
+text = "Press E - $10"
 
 [node name="Start-SSD" type="StaticBody2D" parent="Components/SSDs" unique_id=1337765247]
 

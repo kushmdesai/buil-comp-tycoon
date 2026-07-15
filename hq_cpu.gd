@@ -2,6 +2,20 @@ extends Node2D
 
 const COST = 10
 const MAX = 8
+
+@onready var prompt = $PromptLabel
+
+func _ready():
+	print(prompt)
+	prompt.visible = true
+	
+func show_prompt():
+	prompt.text = "Press E - $" + str(COST)
+	prompt.visible = true
+	
+func hide_prompt():
+	prompt.visible = false
+
 func interact():
 	if GameManager.cpu_count >= MAX:
 		GameManager.show_feedback("Max CPUs Reached!", Color.RED)
