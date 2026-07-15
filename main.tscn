@@ -720,6 +720,12 @@ shape = SubResource("RectangleShape2D_jq2sk")
 position = Vector2(519.5, 528)
 shape = SubResource("RectangleShape2D_lkctx")
 
+[node name="PromptLabel" type="Label" parent="Components/Shop/Shop" unique_id=683264078]
+offset_left = 472.0
+offset_top = 494.0
+offset_right = 512.0
+offset_bottom = 517.0
+
 [node name="Achievements" type="Node2D" parent="Components/Shop" unique_id=281985487]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="Components/Shop/Achievements" unique_id=215608735]

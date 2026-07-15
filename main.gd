@@ -2,7 +2,7 @@ extends Node2D
 
 func _ready():
 	GameManager.load_game()
-	print(GameManager.cpu_count)
+	refresh_overclock_visuals()
 	for cpu in $Components/CPUs.get_children():
 		if cpu.name.begins_with("CPU-"):
 			cpu.visible = false

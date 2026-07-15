@@ -13,13 +13,16 @@ const RAM_INCOME = 0.25
 const SSD_INCOME = 1.0
 
 const OVERCLOCK_MAX = 4
-const OVERCLOCK_COSTS = [50, 150, 400, 1000]
+const OVERCLOCK_COSTS = [50, 100, 250, 300]
 const OVERCLOCK_MULTIPLIERS = [1.0, 1.1, 1.25, 1.5, 2.0]
 
-const CPU_BASE_COST = 5
-const RAM_BASE_COST = 3
-const SSD_BASE_COST = 10
-const COST_MULTIPLIER = 1.15
+const CPU_BASE_COST = 15
+const RAM_BASE_COST = 8
+const SSD_BASE_COST = 40
+
+const CPU_MULTIPLIER = 1.35
+const RAM_MULTIPLIER = 1.18
+const SSD_MULTIPLIER = 1.45
 
 var time_accumulated = 0.0
 
@@ -96,20 +99,20 @@ func unlock_next_ssd(ssd_group: Node):
 func get_overclock_multiplier() -> float:
 	return OVERCLOCK_MULTIPLIERS[overclock_level]
 
-func get_next_overclock_cost():
-	if overclock_level >= OVERCLOCK_MAX:
-		return null
-	return OVERCLOCK_COSTS[overclock_level]
-
 func show_feedback(message: String, color: Color):
 	if hud:
 		hud.show_feedback(message, color)
 
 func get_cpu_cost():
-	return round(CPU_BASE_COST * pow(COST_MULTIPLIER, cpu_count))
+	return round(CPU_BASE_COST * pow(CPU_MULTIPLIER, cpu_count))
 
 func get_ram_cost():
-	return round(RAM_BASE_COST * pow(COST_MULTIPLIER, ram_count))
+	return round(RAM_BASE_COST * pow(RAM_MULTIPLIER, ram_count))
 
 func get_ssd_cost():
-	return round(SSD_BASE_COST * pow(COST_MULTIPLIER, ssd_count))
+	return round(SSD_BASE_COST * pow(SSD_MULTIPLIER, ssd_count))
+
+func get_overclock_cost():
+	if overclock_level >= OVERCLOCK_MAX:
+		return null
+	return OVERCLOCK_COSTS[overclock_level]
