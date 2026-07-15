@@ -34,6 +34,7 @@
 [ext_resource type="Texture2D" uid="uid://bvuaymi1n8568" path="res://assets/overclock-lv3-lc.png" id="26_b1qrp"]
 [ext_resource type="Texture2D" uid="uid://dhb5xhw557n8b" path="res://assets/overclock-lv4.png" id="27_come4"]
 [ext_resource type="Texture2D" uid="uid://bc3co4qoqgysw" path="res://assets/overclock-lv4-lc.png" id="28_h8e4i"]
+[ext_resource type="PackedScene" uid="uid://bt64atgrn2kog" path="res://FeedbackMessage.tscn" id="35_0rl1p"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("2_lswn8")
@@ -763,6 +764,7 @@ offset_top = 23.0
 offset_right = -14.0
 offset_bottom = 111.0
 script = ExtResource("25_0cbny")
+feedback_scene = ExtResource("35_0rl1p")
 
 [node name="MoneyLabel" type="Label" parent="UI/HUD" unique_id=347254241]
 layout_mode = 0
@@ -773,10 +775,10 @@ offset_bottom = 100.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 44
 
-[node name="MessageLabel" type="Label" parent="UI/HUD" unique_id=2134722481]
+[node name="Messages" type="VBoxContainer" parent="UI/HUD" unique_id=673334156]
 layout_mode = 0
 offset_left = 170.0
-offset_top = 107.0
+offset_top = 117.0
 offset_right = 210.0
-offset_bottom = 130.0
-theme_override_font_sizes/font_size = 40
+offset_bottom = 157.0
+theme_override_constants/separation = 8

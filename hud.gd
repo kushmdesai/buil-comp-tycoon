@@ -1,5 +1,7 @@
 extends Control
 
+@export var feedback_scene: PackedScene
+
 func _ready():
 	GameManager.hud = self
 
@@ -7,11 +9,16 @@ func _process(delta):
 	$MoneyLabel.text = "$" + str(snappedf(GameManager.money, 0.01))
 	
 func show_feedback(message: String, color: Color):
-	$MessageLabel.text =  message
-	$MessageLabel.modulate = color
+	var label = feedback_scene.instantiate()
 	
-	$MessageLabel.modulate.a = 1.0
+	label.text = message
+	label.modulate = color
+	label.modulate.a = 1.0
 	
+	$Messages.add_child(label)
 	var tween = create_tween()
 	tween.tween_interval(3.0)
-	tween.tween_property($MessageLabel, "modulate:a", 0.0, 1.0)
+	tween.parallel().tween_property(label, "modulate:a", 0.0, 1.5)
+	tween.parallel().tween_property(label, "position:y", label.position.y - 35, 1.5)
+	
+	tween.tween_callback(label.queue_free)
