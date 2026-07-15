@@ -6,11 +6,12 @@ var ssd_count = 0
 var money = 0
 var overclock_level = 0
 
+var autosave_timer = 0.0
 const SAVE_PATH = "user://savegame.json"
 
-const CPU_INCOME = 0.5
-const RAM_INCOME = 0.25
-const SSD_INCOME = 1.0
+const CPU_INCOME = 0.1
+const RAM_INCOME = 0.05
+const SSD_INCOME = 0.2
 
 const OVERCLOCK_MAX = 4
 const OVERCLOCK_COSTS = [50, 100, 250, 300]
@@ -55,16 +56,21 @@ func load_game():
 		
 func _process(delta):
 	time_accumulated += delta
-	if time_accumulated >= 5:
-		time_accumulated = 0.0
+	autosave_timer += delta
+
+	if time_accumulated >= 1:
+		time_accumulated -= 1.0
 		_tick()
-		
+
+	if autosave_timer >= 60.0:
+		autosave_timer -= 60.0
+		save_game()
+
 func _tick():
 	var multiplier = get_overclock_multiplier()
 	money += ((cpu_count + 1) * CPU_INCOME) * multiplier
 	money += ((ram_count + 1) * RAM_INCOME) * multiplier
 	money += ((ssd_count + 1) * SSD_INCOME) * multiplier
-	save_game()
 
 func unlock_next_cpu(cpu_group: Node):
 	cpu_count += 1
@@ -116,3 +122,14 @@ func get_overclock_cost():
 	if overclock_level >= OVERCLOCK_MAX:
 		return null
 	return OVERCLOCK_COSTS[overclock_level]
+
+func get_income_per_second():
+	var multiplier = get_overclock_multiplier()
+	
+	var income_per_tic = (
+		((cpu_count + 1) * CPU_INCOME) +
+		((ram_count + 1) * RAM_INCOME) +
+		((ssd_count + 1) * SSD_INCOME)
+	) * multiplier
+	
+	return income_per_tic

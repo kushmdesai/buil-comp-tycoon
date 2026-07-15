@@ -582,12 +582,12 @@ position = Vector2(701.5, 360.5)
 shape = SubResource("RectangleShape2D_kq58d")
 
 [node name="PromptLabel" type="Label" parent="Components/SSDs/HQ-SSD" unique_id=600561369]
+visible = false
 z_index = 1
 offset_left = 565.0
 offset_top = 313.0
 offset_right = 666.0
 offset_bottom = 336.0
-text = "Press E - $10"
 
 [node name="Start-SSD" type="StaticBody2D" parent="Components/SSDs" unique_id=1337765247]
 
@@ -810,3 +810,11 @@ offset_top = 117.0
 offset_right = 210.0
 offset_bottom = 157.0
 theme_override_constants/separation = 8
+
+[node name="IncomeLabel" type="Label" parent="UI/HUD" unique_id=1275625447]
+layout_mode = 0
+offset_left = 1148.0
+offset_top = 38.0
+offset_right = 1188.0
+offset_bottom = 82.0
+theme_override_font_sizes/font_size = 30

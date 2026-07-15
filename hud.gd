@@ -7,6 +7,7 @@ func _ready():
 
 func _process(delta):
 	$MoneyLabel.text = "$" + str(snappedf(GameManager.money, 0.01))
+	$IncomeLabel.text = "$" + str(snappedf(GameManager.get_income_per_second(), 2)) + "/s"
 	
 func show_feedback(message: String, color: Color):
 	var label = feedback_scene.instantiate()
