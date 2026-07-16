@@ -45,6 +45,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.10980392, 0.6313726, 0.32156864, 1)
 theme_override_colors/font_pressed_color = Color(0, 0.52156866, 0.16078432, 1)
 theme_override_fonts/font = ExtResource("1_05l2w")
+theme_override_font_sizes/font_size = 30
 text = "NEW GAME"
 icon = ExtResource("1_ig5kc")
 
@@ -54,6 +55,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.10980392, 0.6313726, 0.32156864, 1)
 theme_override_colors/font_pressed_color = Color(0, 0.52156866, 0.16078432, 1)
 theme_override_fonts/font = ExtResource("1_05l2w")
+theme_override_font_sizes/font_size = 30
 text = "CONTINUE"
 icon = ExtResource("2_05l2w")
 
@@ -63,6 +65,7 @@ theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_focus_color = Color(0.10980392, 0.6313726, 0.32156864, 1)
 theme_override_colors/font_pressed_color = Color(0, 0.52156866, 0.16078432, 1)
 theme_override_fonts/font = ExtResource("1_05l2w")
+theme_override_font_sizes/font_size = 30
 text = "QUIT"
 icon = ExtResource("3_hafda")
 

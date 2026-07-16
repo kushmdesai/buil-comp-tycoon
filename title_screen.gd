@@ -45,7 +45,7 @@ func _on_quit_button_pressed() -> void:
 
 func _on_yes_button_pressed() -> void:
 	GameManager.reset_game()
-	get_tree().change_scene_to_file("res://main.tscn")
+	get_tree().change_scene_to_file("res://Tutorial.tscn")
 
 
 func _on_no_button_pressed() -> void:
