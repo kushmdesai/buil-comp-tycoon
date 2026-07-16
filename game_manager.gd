@@ -37,6 +37,25 @@ var achievements = {
 }
 
 var game_completed = false
+
+func reset_game():
+	cpu_count = 0
+	ram_count = 0
+	ssd_count = 0
+	money = 0
+	overclock_level = 0
+	
+	game_completed = false
+	
+	achievements = {
+		"all_parts": false,
+		"max_overclock": false,
+		"thousand_dollars": false
+	}
+	
+	if FileAccess.file_exists(SAVE_PATH):
+		DirAccess.remove_absolute(SAVE_PATH)
+
 func save_game():
 	var data = {
 		"cpu_count": cpu_count,

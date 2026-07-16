@@ -65,3 +65,46 @@ theme_override_colors/font_pressed_color = Color(0, 0.52156866, 0.16078432, 1)
 theme_override_fonts/font = ExtResource("1_05l2w")
 text = "QUIT"
 icon = ExtResource("3_hafda")
+
+[node name="ConfirmPanel" type="Panel" parent="." unique_id=927638572]
+layout_mode = 0
+offset_left = 231.0
+offset_top = 195.0
+offset_right = 908.0
+offset_bottom = 481.0
+
+[node name="Label" type="Label" parent="ConfirmPanel" unique_id=1179122626]
+layout_mode = 0
+offset_right = 671.0
+offset_bottom = 143.0
+theme_override_fonts/font = ExtResource("1_05l2w")
+theme_override_font_sizes/font_size = 35
+text = "Start a new game?
+Your current save will be deleted."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConfirmPanel" unique_id=978781037]
+layout_mode = 0
+offset_top = 144.0
+offset_right = 680.0
+offset_bottom = 285.0
+alignment = 1
+
+[node name="YesButton" type="Button" parent="ConfirmPanel/HBoxContainer" unique_id=1954194788]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_05l2w")
+theme_override_font_sizes/font_size = 35
+text = "       YES       "
+
+[node name="NoButton" type="Button" parent="ConfirmPanel/HBoxContainer" unique_id=674363773]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_05l2w")
+theme_override_font_sizes/font_size = 35
+text = "        NO!       "
+
+[connection signal="pressed" from="VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="ConfirmPanel/HBoxContainer/YesButton" to="." method="_on_yes_button_pressed"]
+[connection signal="pressed" from="ConfirmPanel/HBoxContainer/NoButton" to="." method="_on_no_button_pressed"]
