@@ -16,12 +16,14 @@ func hide_prompt():
 
 func interact():
 	if GameManager.overclock_level >= GameManager.OVERCLOCK_MAX:
+		GameManager.hud.play(GameManager.hud.error_sound)
 		GameManager.show_feedback("Overclock Maxed!", Color.RED)
 		return
 	
 	var cost = GameManager.get_overclock_cost()
 	if GameManager.money >= cost:
 		GameManager.money -= cost
+		GameManager.hud.play(GameManager.hud.overclock_sound)
 		GameManager.overclock_level += 1
 		GameManager.check_achievemetns()
 		GameManager.save_game()
@@ -31,4 +33,5 @@ func interact():
 		
 		GameManager.show_feedback("Overclocked to Lv%d!" % GameManager.overclock_level, Color.GREEN)
 	else:
+		GameManager.hud.play(GameManager.hud.error_sound)
 		GameManager.show_feedback("Not enough money!", Color.RED)

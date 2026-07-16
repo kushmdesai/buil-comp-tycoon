@@ -857,3 +857,45 @@ offset_left = 171.0
 offset_right = 211.0
 offset_bottom = 44.0
 theme_override_font_sizes/font_size = 30
+
+[node name="SFXPlayer" type="AudioStreamPlayer2D" parent="UI/HUD" unique_id=223600280]
+
+[node name="FinishScreen" type="CanvasLayer" parent="." unique_id=1802399088]
+layer = 15
+
+[node name="ColorRect" type="ColorRect" parent="FinishScreen" unique_id=1157906635]
+offset_right = 1204.0
+offset_bottom = 693.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TerminalLabel" type="Label" parent="FinishScreen/ColorRect" unique_id=1096599021]
+layout_mode = 0
+offset_left = 18.0
+offset_top = 13.0
+offset_right = 589.0
+offset_bottom = 666.0
+theme_override_font_sizes/font_size = 18
+text = "╔════════════════════╗
+║ SYSTEM DIAGNOSTIC                                     ║
+╠════════════════════╣
+║ CPU...........MAX                                                ║
+║ RAM...........MAX                                               ║
+║ SSD...........MAX                                                 ║
+║ POWER.........MAX                                            ║
+║ PERFORMANCE...MAX                                    ║
+╚════════════════════╝
+
+
+SYSTEM STATUS:
+COMPLETE
+
+
+All components installed.
+Maximum performance achieved.
+
+You have built the
+ultimate machine.
+
+
+THANK YOU FOR PLAYING."

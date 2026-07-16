@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://bo8kkrmddfex5"]
+
+[ext_resource type="FontFile" uid="uid://dausfj0s2o2ud" path="res://font/Share_Tech_Mono/ShareTechMono-Regular.ttf" id="1_05l2w"]
+[ext_resource type="Script" uid="uid://cnjkqvat20whr" path="res://title_screen.gd" id="1_hafda"]
+[ext_resource type="Texture2D" uid="uid://bjpuvw4k4i370" path="res://icons/new_game.svg" id="1_ig5kc"]
+[ext_resource type="Texture2D" uid="uid://6exi21oqkg8a" path="res://icons/load_game.svg" id="2_05l2w"]
+[ext_resource type="Texture2D" uid="uid://blrowusuknfco" path="res://icons/cancel.svg" id="3_hafda"]
+
+[node name="TitleScreen" type="Control" unique_id=677651627]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hafda")
+
+[node name="Background" type="ColorRect" parent="." unique_id=59383979]
+layout_mode = 0
+offset_left = -804.0
+offset_top = -419.0
+offset_right = 1970.0
+offset_bottom = 1272.0
+color = Color(0, 0, 0, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=943456485]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 645.0
+theme_override_constants/separation = 15
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=1028052166]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.10980392, 0.6313726, 0.32156864, 1)
+theme_override_colors/font_shadow_color = Color(0, 0.52156866, 0.16078432, 1)
+theme_override_colors/font_outline_color = Color(0.011764706, 0.011764706, 0.011764706, 1)
+theme_override_fonts/font = ExtResource("1_05l2w")
+theme_override_font_sizes/font_size = 88
+text = "Computer Building Tycoon"
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer" unique_id=980919420]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.10980392, 0.6313726, 0.32156864, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.52156866, 0.16078432, 1)
+theme_override_fonts/font = ExtResource("1_05l2w")
+text = "NEW GAME"
+icon = ExtResource("1_ig5kc")
+
+[node name="ContinueButton" type="Button" parent="VBoxContainer" unique_id=207929459]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.10980392, 0.6313726, 0.32156864, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.52156866, 0.16078432, 1)
+theme_override_fonts/font = ExtResource("1_05l2w")
+text = "CONTINUE"
+icon = ExtResource("2_05l2w")
+
+[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1172609332]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_focus_color = Color(0.10980392, 0.6313726, 0.32156864, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.52156866, 0.16078432, 1)
+theme_override_fonts/font = ExtResource("1_05l2w")
+text = "QUIT"
+icon = ExtResource("3_hafda")

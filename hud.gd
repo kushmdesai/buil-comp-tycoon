@@ -1,6 +1,12 @@
 extends Control
 
 @export var feedback_scene: PackedScene
+@onready var sfx = $SFXPlayer
+
+var buy_sound = preload("res://sound-effects/cha-ching.mp3")
+var error_sound = preload("res://sound-effects/buzzer.mp3")
+var achievement_sound = preload("res://sound-effects/chime.mp3")
+var overclock_sound = preload("res://sound-effects/power_up.mp3")
 
 func _ready():
 	GameManager.hud = self
@@ -23,3 +29,7 @@ func show_feedback(message: String, color: Color, duration := 3.0):
 	tween.parallel().tween_property(label, "position:y", label.position.y - 35, duration/4)
 	
 	tween.tween_callback(label.queue_free)
+
+func play(sound):
+	sfx.stream = sound
+	sfx.play()

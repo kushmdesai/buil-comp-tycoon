@@ -1,6 +1,10 @@
 extends Node2D
 
+@onready var finish_screen = $FinishScreen
+@onready var finish_overlay = $FinishScreen/ColorRect
+
 func _ready():
+	finish_screen.visible = false
 	GameManager.load_game()
 	refresh_overclock_visuals()
 	for cpu in $Components/CPUs.get_children():
@@ -54,3 +58,53 @@ func refresh_overclock_visuals():
 			var is_unlocked = GameManager.overclock_level >= i
 			stage.get_node("Unlocked").visible = is_unlocked
 			stage.get_node("Locked").visible = not is_unlocked
+			
+func show_finish_screen():
+	finish_screen.visible = true
+	
+	$FinishScreen/ColorRect/TerminalLabel.text = ""
+	
+	finish_overlay.modulate.a = 0.0
+	
+	var fade_in = create_tween()
+	fade_in.tween_property(finish_overlay, "modulate:a", 1.0, 2.0)
+	
+	await fade_in.finished
+	
+	await type_text("""
+SYSTEM DIAGNOSTICS
+CPU..........MAX
+RAM..........MAX
+SSD..........MAX
+PERFOMANCE...MAX
+
+SYSTEM STATUS:
+COMPLETE
+
+
+All components installed.
+Maximum performance achieved.
+
+You have built the
+ultimate machine.
+
+
+THANK YOU FOR PLAYING.
+""")
+
+	await get_tree().create_timer(10.0).timeout
+	var fade_out = create_tween()
+	fade_out.tween_property(finish_overlay, "modulate:a", 0.0, 2.0)
+	
+	await fade_out.finished
+	
+	finish_screen.visible = false
+	GameManager.game_completed = true
+	GameManager.save_game()
+
+func type_text(text: String):
+	$FinishScreen/ColorRect/TerminalLabel.text = ""
+	
+	for character in text:
+		$FinishScreen/ColorRect/TerminalLabel.text += character
+		await get_tree().create_timer(0.03).timeout

@@ -15,13 +15,16 @@ func hide_prompt():
 func interact():
 	var COST = GameManager.get_ram_cost()
 	if GameManager.ram_count >= MAX:
+		GameManager.hud.play(GameManager.hud.error_sound)
 		GameManager.show_feedback("MAX RAMs reached!", Color.RED)
 		return
 	if GameManager.money >= COST:
 		GameManager.money -= COST
+		GameManager.hud.play(GameManager.hud.buy_sound)
 		GameManager.unlock_next_ram(get_node("/root/Main/Components/RAMs"))
 		GameManager.show_feedback("RAM unlocked!", Color.GREEN)
 		GameManager.check_achievemetns()
 		GameManager.save_game()
 	else:
+		GameManager.hud.play(GameManager.hud.error_sound)
 		GameManager.show_feedback("Not enough money!", Color.RED)

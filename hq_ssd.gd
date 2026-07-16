@@ -14,13 +14,16 @@ func hide_prompt():
 func interact():
 	var COST = GameManager.get_ssd_cost()
 	if GameManager.ssd_count >= MAX:
+		GameManager.hud.play(GameManager.hud.error_sound)
 		GameManager.show_feedback("MAX SSDs reached!", Color.RED)
 		return
 	if GameManager.money >= COST:
 		GameManager.money -= COST
+		GameManager.hud.play(GameManager.hud.buy_sound)
 		GameManager.unlock_next_ssd(get_node("/root/Main/Components/SSDs"))
 		GameManager.show_feedback("SSD unlocked!", Color.GREEN)
 		GameManager.check_achievemetns()
 		GameManager.save_game()
 	else:
+		GameManager.hud.play(GameManager.hud.error_sound)
 		GameManager.show_feedback("Not enough money!", Color.RED)

@@ -36,6 +36,7 @@ var achievements = {
 	"thousand_dollars": false
 }
 
+var game_completed = false
 func save_game():
 	var data = {
 		"cpu_count": cpu_count,
@@ -43,7 +44,8 @@ func save_game():
 		"ssd_count": ssd_count,
 		"overclock_level": overclock_level,
 		"money": money,
-		"achievements": achievements
+		"achievements": achievements,
+		"game_completed": game_completed
 	}
 	var file = FileAccess.open(SAVE_PATH, FileAccess.WRITE)
 	file.store_string(JSON.stringify(data))
@@ -62,6 +64,7 @@ func load_game():
 		overclock_level = int(data.get("overclock_level", 0))
 		money = data["money"]
 		achievements = data.get("achievements", achievements)
+		game_completed = data.get("game_completed")
 		update_achievements()
 
 func _process(delta):
@@ -149,31 +152,34 @@ func check_achievemetns():
 	if cpu_count >= 8 and ram_count >=18 and ssd_count >= 4:
 		if not achievements["all_parts"]:
 			achievements["all_parts"] = true
+			hud.play(hud.achievement_sound)
 			show_feedback("Achievement Unlocked!\n Fully Equipped", Color.AQUA)
 			update_achievements()
 		
 	if overclock_level >= OVERCLOCK_MAX:
 		if not achievements["max_overclock"]:
 			achievements["max_overclock"] = true
+			hud.play(hud.achievement_sound)
 			show_feedback("Achievemnt Unlocked!\n Maximum Performance", Color.AQUA)
 			update_achievements()
 		
 	if money >= 1000:
 		if not achievements["thousand_dollars"]:
 			achievements["thousand_dollars"] = true
+			hud.play(hud.achievement_sound)
 			show_feedback("Achievemnt Unlocked!\n High Roller", Color.AQUA)
 			update_achievements()
+			
+	if achievements["all_parts"] and achievements["max_overclock"] and achievements["thousand_dollars"]:
+		if not game_completed:
+			game_completed = true
+			get_tree().current_scene.show_finish_screen()
 
 func update_achievements():
-	print("updating achievemnts")
 	if achievement_sprites:
-		print("file found")
 		if achievements["all_parts"]:
-			print("print updating all parts")
 			achievement_sprites.show_sprite("all")
 		if achievements["max_overclock"]:
-			print("updating max overclock")
 			achievement_sprites.show_sprite("max")
 		if achievements["thousand_dollars"]:
-			print("updating thousand dollars")
 			achievement_sprites.show_sprite("$")
