@@ -6,6 +6,8 @@ You can run around, buy some CPU, RAM, SSD to make your computer. The more parts
 - [About](#about)
 - [Features](#features)
 - [Installation](#installation)
+- [Tech Stack](#tech-stack)
+- [Motivation](#motivation)
 - [How to Play](#how-to-play)
 - [Screenshots](#screenshots)
 - [Contributing](#contributing)
@@ -35,7 +37,7 @@ Computer Building Tycoon is a simple retro game made to run on any desktop PC wi
 2. Click on "Run Game" to play in your browser
 3. Enjoy!
 
-#### Mac OS
+#### Mac OS (Universal — Intel & Apple Silicon)
 1. Download the .zip file from the [GitHub releases](https://github.com/kushmdesai/buil-comp-tycoon/releases) or [Itch.io](https://kcoder.itch.io/computer-building-tycoon)
 2. Unzip the file
 3. **Do not double click to open** as the game is unsigned. Instead, right click and select **"Open"** and then **"Open"** again to run the game.
@@ -59,6 +61,13 @@ chmod +x ./ComputerBuildingTycoon.x86_64
 ```
 5. Double click to run the file
 6. Enjoy!
+
+## Tech Stack
+- [Godot](https://godotengine.org/) - Game Engine
+- [Piskel](https://www.piskelapp.com/) - Pixel Art Editor
+
+# Motivation
+I started out wanting to learn how Godot works. I've tried making a few games in the past but I never really put work in them. So I decided to make a simple game that would teach me more about Godot. As I got more into the development it became more of a excitement, adding more features, playing it, finding bugs, and fixing them. I think overall I had more fun making the game than playing it. I hope you enjoy it just as much, if not more, than I did.
 
 ## How to Play
 
@@ -105,6 +114,9 @@ Developed by Kush/Kcoder:
 
 GitHub: [https://github.com/kushmdesai](https://github.com/kushmdesai)
 
-Project Repo: [https://github.com/kushmdesai/snack-shop-tycoon](https://github.com/kushmdesai/buil-comp-tycoon)
+Project Repo: [https://github.com/kushmdesai/buil-comp-tycoon](https://github.com/kushmdesai/buil-comp-tycoon)
 
 Itch.io: [https://kcoder.itch.io/computer-building-tycoon](https://kcoder.itch.io/computer-building-tycoon)
+
+## AI Disclosure
+This project used AI as a tool to assist in learning how godot works. Such as figuring out the best node to use in a specific use case, or something like *What are Signals*. AI was not used to write major sections of code, create art, or any of the sound effects.
