@@ -1,152 +1,110 @@
-<a id="readme-top"></a>
+# Computer Building Tycoon
 
-<!-- SHIELDS -->
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+A retro **top-down tycoon-style game** built with **Godot**.  
+You can run around, buy some CPU, RAM, SSD to make your computer. The more parts the more money you earn! And ofcourse you can overclock to earn money faster. This is a simple retro game with custom drawn pixel art and a simple UI. I hope you enjoy it!
 
-<!-- HEADER -->
-<br />
-<div align="center">
-    <a href="https://github.com/BudzioT/Godot_Super-Wakatime">
-        <img src="https://cloud-bo1ln2br1-hack-club-bot.vercel.app/0godotwaka22.png"  alt="Godot Wakatime"/>
-    </a>
-    <h3 align="center"> Godot Super Wakatime </h3>
-    <p align="center">
-        Tool to measure time spent in loved by many people game engine - Godot
-        <br />
-        Officially approved to use in events created by Hack Club
-        <br />
-        <br />
-        <a href="https://godotengine.org/asset-library/asset/3484">Get from Asset Lib</a>
-        ·
-        <a href="https://youtu.be/rqAc-YdVXyM">View Demo</a>
-        ·
-        <a href="https://github.com/BudzioT/Godot_Super-Wakatime/issues/new">Report Bug / Request Feature</a>
-    </p>
-</div>
-
-<!-- CONTENTS -->
-<details>
-    <summary>Table of Contents</summary>
-    <ol>
-        <li>
-            <a href="#about">About The Project</a>
-            <ul>
-                <li><a href="#built-with">Built Using</a></li>
-            </ul>
-        </li>
-        <li>
-            <a href="#getting-started">Getting Started</a>
-            <ul>
-                <li><a href="#installation">Installation</a></li>
-            </ul>
-        </li>
-        <li><a href="#usage">Usage</a></li>
-        <li><a href="#license">License</a></li>
-    </ol>
-</details>
+- [About](#about)
+- [Features](#features)
+- [Installation](#installation)
+- [How to Play](#how-to-play)
+- [Screenshots](#screenshots)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
 
-<!-- ABOUT -->
-## About The Project
-<br />
+## About
 
-[![Product Screenshot][product-screenshot]](https://waka.hackclub.com)
+Computer Building Tycoon is a simple retro game made to run on any desktop PC with support for Mac, Windows, Linux, and even the web. The game is built with Godot and is a lightweight game that has custom drawn pixel art and a simple UI. The game is designed to be easy to play and be incredibly fun! You get to run around as a miniture person inside the computer and buy parts for it to make it larger.
 
-This tool can successfully measure time spent building your games or apps in Godot.
-<br />
-Here's why:
-* It differentiates between switching a scene and script
-* It counts key presses as coding and mouse clicks as building scene
-* Changing scene structure results in a heartbeat sent
-* It correctly detects OS, machine name, language, editor, files
-* It can detect your cursor line and position
-* Time is split between: Building, Coding, Testing
-* In the future it will also detect testing your projects
+# Features
 
-It works on both Linux and Windows, it wasn't tested on macOS yet
-<br />
-You can also see your time spent in the editor itself:
-[![Time in editor][time-screenshot]]
+- Character Movement (WASD/arrow keys)
+- Collisions
+- Support for Web
+- Lightweight and runs on almost any PC
+- Cooldown system to prevent accidental double buy.
+- Easy to install and launch with no ads or distractions
+- [Itch.io](https://kcoder.itch.io/computer-building-tycoon) Page
 
-<p align="right">(<a href="#readme-top">top</a>)</p>
+## Installation
 
+#### Web
 
-### Built Using
-I used the Ouch! CLI tool for decompression of files <br />
-This project was built using one simple, yet powerful language.<br />
-It required a lot of workarounds, but it was a pleasure to use it
-* [![GDScript][Godot]][Godot-url]
-* [![Ouch!][Ouch-shield]][Ouch-url]
+1. Go to [https://kcoder.itch.io/computer-building-tycoon](https://kcoder.itch.io/computer-building-tycoon)
+2. Click on "Run Game" to play in your browser
+3. Enjoy!
 
-<p align="right">(<a href="#readme-top">top</a>)</p>
+#### Mac OS
+1. Download the .zip file from the [GitHub releases](https://github.com/kushmdesai/buil-comp-tycoon/releases) or [Itch.io](https://kcoder.itch.io/computer-building-tycoon)
+2. Unzip the file
+3. **Do not double click to open** as the game is unsigned. Instead, right click and select **"Open"** and then **"Open"** again to run the game.
+*The game will now work if you double click to open*
+4. Enjoy!
 
-<!-- GETTING STARTED -->
-## Getting Started
-How to install and use this software? It's easy!
+#### Windows
+1. Download the .zip file from the [GitHub releases](https://github.com/kushmdesai/buil-comp-tycoon/releases) or [Itch.io](https://kcoder.itch.io/computer-building-tycoon)
+2. Unzip the file
+3. Double click the .exe file
+4. If there is a warning about the file being unsigned, click **"More Info"** and then **"Run Anyway"**
+5. Enjoy!
 
-### Installation
-You can either download it from the [Godot Asset Library](https://godotengine.org/asset-library/asset/3484).
-<br />Or you can manually install it, here's how to do it!
-1. Clone the repository
-    ```sh
-    git clone https://github.com/BudzioT/Godot_Super-Wakatime.git
-    ```
-2. Go into your project
-3. Insert the entire `./addons` folder into your project `res://` directory
+#### Linux
+1. Download the .zip file from the [GitHub releases](https://github.com/kushmdesai/buil-comp-tycoon/releases) or [Itch.io](https://kcoder.itch.io/computer-building-tycoon)
+2. Unzip the file
+3. Double click to run the file
+4. If you run into an issue with **permissions, open a terminal and run the following command**:
+```bash
+chmod +x ./ComputerBuildingTycoon.x86_64
+```
+5. Double click to run the file
+6. Enjoy!
 
-<p align="right">(<a href="#readme-top">top</a>)</p>
+## How to Play
 
-<!-- USAGE -->
-## Usage
-Don't know how to use this plugin? Here are the steps:
-1. Turn on the plugin in your plugins. In your `Project -> Project Settings -> Plugins -> `Click the `Enable` checkbox near this plugin
-2. If prompted for API key, provide it from Wakatime website
-3. if there is an issue with it, please manually create `~/.wakatime.cfg` file with these contents:
-    ```sh
-    [settings]
-    api_key=xxxx
-    ```
-    Where xxxx is your api key
-<br /><br />
-If you are coming from Hack Club use this:
-    ```sh
-    [settings]
-    api_url = https://hackatime.hackclub.com/api/hackatime/v1
-    api_key=xxxx
-    ```
-4. Wakatime CLI should have been installed automatically along with Ouch! Decompression library
-5. Work on your project! You should see your results on either Wakatime or Hackatime!
-6. You can also see your time at the bottom panel
+- Use WASD to move around
+- Buy stuff from store with money
+- Grow your computer
+- Make more money by overclocking your computer
+- Repeat and get rich!
 
-<p align="right">(<a href="#readme-top">top</a>)</p>
+## Controls
 
-<!-- LICENSE -->
+| Key              | Action                                         |
+|------------------|------------------------------------------------|
+| **W/UP Key**     | Move Up                                        |
+| **S/Down Key**   | Move Down                                      |
+| **A/Right Key**  | Move Right                                     |
+| **D/Left Key**   | Move Left                                      |
+| **E**            | Interact with NPC, and stores.                 |
+
+## Screenshots
+
+![Titlescreen](/screenshots/Titlescreen.png)
+
+![Tutorial](/screenshots/Tutorial.png)
+![Achievements](/screenshots/Achievements.png)
+
+![Overclocking](/screenshots/Overclock.png)
+
+![RAM](/screenshots/RAM.png)
+
+![SSD](/screenshots/SSD.png)
+
+## Contributing
+
+Contributions are welcome! If you want to add features, fix bugs, or improve UI, please open an issue or submit a pull request.
+
 ## License
 
-Distributed under the MIT License. See `LICENSE` for more information.
+This project is licensed under MIT License - see [LICENSE](/LICENSE) for details
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## Contact
 
+Developed by Kush/Kcoder:
 
-<!-- URLS -->
-[contributors-shield]: https://img.shields.io/github/contributors/budziot/Godot_Super-Wakatime?style=for-the-badge
-[contributors-url]: https://github.com/BudzioT/Godot_Super-Wakatime/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/budziot/Godot_Super-Wakatime?style=for-the-badge
-[forks-url]: https://github.com/BudzioT/Godot_Super-Wakatime/forks
-[stars-shield]: https://img.shields.io/github/stars/budziot/Godot_Super-Wakatime?style=for-the-badge
-[stars-url]: https://github.com/BudzioT/Godot_Super-Wakatime/stargazers
-[issues-shield]: https://img.shields.io/github/issues/budziot/Godot_Super-Wakatime?style=for-the-badge
-[issues-url]: https://github.com/BudzioT/Godot_Super-Wakatime/issues
-[license-shield]: https://img.shields.io/github/license/budziot/Godot_Super-Wakatime?style=for-the-badge
-[license-url]: https://github.com/BudzioT/Godot_Super-Wakatime/blob/master/addons/godot_super-wakatime/LICENSE
-[product-screenshot]: https://cloud-j4wibbzz7-hack-club-bot.vercel.app/0image.png
-[product-logo]: https://cloud-j4wibbzz7-hack-club-bot.vercel.app/2godotwaka2.png
-[Godot]: https://img.shields.io/badge/Godot%20Engine-478CBF?logo=godotengine&logoColor=fff&style=flat
-[Godot-url]: https://godotengine.org/
-[Ouch-shield]: https://img.shields.io/badge/Ouch!-tool-blue?label=Ouch!
-[Ouch-url]: https://github.com/ouch-org/ouch
-[time-screenshot]: https://cloud-l88kldf50-hack-club-bot.vercel.app/0image.png
+GitHub: [https://github.com/kushmdesai](https://github.com/kushmdesai)
+
+Project Repo: [https://github.com/kushmdesai/snack-shop-tycoon](https://github.com/kushmdesai/buil-comp-tycoon)
+
+Itch.io: [https://kcoder.itch.io/computer-building-tycoon](https://kcoder.itch.io/computer-building-tycoon)
