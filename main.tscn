@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://cs27fqepy0tnw" path="res://assets/overclock-all.png" id="34_4lmeg"]
 [ext_resource type="Texture2D" uid="uid://duse8atjrfufr" path="res://assets/money.png" id="35_0cp0l"]
 [ext_resource type="PackedScene" uid="uid://bt64atgrn2kog" path="res://FeedbackMessage.tscn" id="35_0rl1p"]
+[ext_resource type="Texture2D" uid="uid://do5egp87xjpt3" path="res://icons/pause.svg" id="41_4lmeg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("2_lswn8")
@@ -860,8 +861,17 @@ theme_override_font_sizes/font_size = 30
 
 [node name="SFXPlayer" type="AudioStreamPlayer2D" parent="UI/HUD" unique_id=223600280]
 
+[node name="PauseButton" type="TextureButton" parent="UI/HUD" unique_id=1475232433]
+layout_mode = 0
+offset_left = 1177.0
+offset_right = 1280.0
+offset_bottom = 94.0
+texture_normal = ExtResource("41_4lmeg")
+stretch_mode = 0
+
 [node name="FinishScreen" type="CanvasLayer" parent="." unique_id=1802399088]
 layer = 15
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="FinishScreen" unique_id=1157906635]
 offset_right = 1204.0
@@ -899,3 +909,5 @@ ultimate machine.
 
 
 THANK YOU FOR PLAYING."
+
+[connection signal="pressed" from="UI/HUD/PauseButton" to="UI/HUD" method="_on_pause_button_pressed"]

@@ -202,3 +202,6 @@ func update_achievements():
 			achievement_sprites.show_sprite("max")
 		if achievements["thousand_dollars"]:
 			achievement_sprites.show_sprite("$")
+
+func baton():
+	show_feedback("Tutorial over\nNow the real game begins", Color.AQUA)

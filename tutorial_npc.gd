@@ -21,7 +21,7 @@ func interact():
 	elif not tutorial.ssd_bought:
 		tutorial.show_dialogue(
 			"TECHNICIAN",
-			"Nice! The computer is starting to rock.\nYou'll need storage though\nVisit SSD HQ to obtain some\n It should be to the east RAM HQ\njust past the shop"
+			"Nice! The computer is starting to rock.\nYou'll need storage though\nVisit SSD HQ to obtain some\n It should be to the east of RAM HQ\njust past the shop"
 		)
 		tutorial.stage = 3
 		
@@ -34,7 +34,7 @@ func interact():
 	else:
 		tutorial.show_dialogue(
 			"TECHNICIAN",
-			"I've taught you everything I know\nI think you're ready to start\nLoading Computer Building Tycoon..."
+			"I've taught you everything I know\nI think you're ready to start\nI'll be back later try to build the\nbiggest computer you can\nalso get a ton of money"
 		)
 		tutorial.stage = 5
 		await get_tree().create_timer(5).timeout

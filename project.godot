@@ -10,10 +10,11 @@ config_version=5
 
 [application]
 
-config/name="buil-comp-tycoon"
+config/name="Computer Building Tycoon"
+config/description="Build your own computer. How big can you make it? Whats the most money you could get? Its a simple retro tycoon game with custom art and a whole lot of fun!"
 run/main_scene="uid://bo8kkrmddfex5"
 config/features=PackedStringArray("4.7", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://c8ea3kicl5786"
 
 [autoload]
 

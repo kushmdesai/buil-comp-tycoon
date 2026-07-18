@@ -25,11 +25,15 @@ func show_feedback(message: String, color: Color, duration := 3.0):
 	$Messages.add_child(label)
 	var tween = create_tween()
 	tween.tween_interval(duration/2)
-	tween.parallel().tween_property(label, "modulate:a", 0.0, duration/2)
+	#tween.parallel().tween_property(label, "modulate:a", 0.0, duration/2)
 	tween.parallel().tween_property(label, "position:y", label.position.y - 35, duration/4)
-	
-	tween.tween_callback(label.queue_free)
+	#tween.tween_callback(label.queue_free)
 
 func play(sound):
 	sfx.stream = sound
 	sfx.play()
+
+
+func _on_pause_button_pressed() -> void:
+	GameManager.save_game()
+	get_tree().change_scene_to_file("res://title_screen.tscn")

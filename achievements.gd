@@ -27,7 +27,7 @@ func interact():
 	message += "[✓]\n" if GameManager.achievements["all_parts"] else "[ ]\n"
 	message += "Maximum Performance "
 	message += "[✓]\n" if GameManager.achievements["max_overclock"] else "[ ]\n"
-	message += "High Roller "
+	message += "Thousandaire "
 	message += "[✓]\n" if GameManager.achievements["thousand_dollars"] else "[ ]\n"
 
 	GameManager.show_feedback(message, Color.AQUA, 10.0)
