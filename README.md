@@ -61,6 +61,7 @@ chmod +x ./ComputerBuildingTycoon.x86_64
 ```
 5. Double click to run the file
 6. Enjoy!
+*Note: the Linux download of the game has not been tested and may not function properly*
 
 ## Tech Stack
 - [Godot](https://godotengine.org/) - Game Engine
